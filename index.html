@@ -32,6 +32,11 @@
         body {
             line-height: 1.7;
             color: var(--primary);
+            position: relative;
+        }
+
+        html {
+            overflow-x: hidden;
         }
 
         .navbar {
@@ -203,11 +208,58 @@
                 font-size: 2rem;
             }
             
-            .features-grid {
-                grid-template-columns: 1fr;
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card, .case-card {
+                padding: 1.5rem;
             }
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--primary);
+            }
+            
+            .nav-links a::after {
+                display: none;
+            }
+
+            .team-logo {
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            input {
+                font-size: 16px; /* Prevent zoom on iOS */
+            }
+            
+            .cta-button {
+                width: 100%;
             }
         }
 
@@ -353,6 +405,14 @@
             margin-top: 1rem;
             min-height: 20px;
         }
+
+        @media (hover: hover) {
+            .feature-card:hover, 
+            .case-card:hover,
+            .team-logo:hover {
+                transform: translateY(-5px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -364,6 +424,9 @@
             <a href="#demo">Demo</a>
             <a href="#subscribe">Subscribe</a>
         </div>
+        <button class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
 
     <section class="hero">
@@ -514,6 +577,10 @@
             messageDiv.style.color = '#ff6b6b';
             console.error('Error:', error);
         });
+    });
+
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
     });
     </script>
 </body>
