@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliberation.io - Citizen Engagement Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Deliberation.io - A non-profit platform enabling large-scale citizen deliberations for democratic decision-making. Developed with Stanford Digital Economy Lab and MIT Gov Lab.">
+    <meta property="og:title" content="Deliberation.io - Citizen Engagement Platform">
+    <meta property="og:description" content="Facilitate structured dialogues between citizens and organizations for better decision-making.">
+    <meta property="og:image" content="https://deliberation.io/social-preview.jpg">
+    <link rel="canonical" href="https://deliberation.io">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>
+        :root {
+            --primary: #1a2b49;
+            --secondary: #2c83d1;
+            --light: #f8f9fc;
+            --accent: #ff6b6b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            color: var(--primary);
+        }
+
+        .navbar {
+            padding: 1rem 5%;
+            background: var(--light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .navbar h1 span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 10rem 5% 6rem;
+            background: linear-gradient(135deg, var(--secondary), #1a5f9a);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .features {
+            padding: 4rem 5%;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .team {
+            padding: 4rem 5%;
+            background: white;
+            text-align: center;
+        }
+
+        .team-logos {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .team-logo {
+            height: 80px;
+            opacity: 0.8;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .team-logo:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .demo {
+            padding: 4rem 5%;
+            text-align: center;
+            background: var(--light);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid white;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.4s ease;
+        }
+
+        .cta-button:hover::after {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .use-cases {
+            padding: 4rem 5%;
+            background: var(--light);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .case-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .case-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .case-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .case-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .case-card li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-weight: 700;
+        }
+
+        footer {
+            padding: 2rem 5%;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1><span>deliberation.io</span></h1>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#team">Team</a>
+            <a href="#demo">Demo</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h2>Reimagining Democratic Engagement</h2>
+        <p>Facilitating large-scale, structured dialogues between citizens to strengthen democratic decision-making.</p>
+        <a href="#demo" class="cta-button">View Case Studies</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Core Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-scale-balanced feature-icon"></i>
+                <h3>Scalable Discussions</h3>
+                <p>Our platform supports thousands of participants in structured, productive dialogues.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-handshake feature-icon"></i>
+                <h3>Inclusive Participation</h3>
+                <p>Equitable access and intelligent facilitation ensure diverse perspectives are heard.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-robot feature-icon"></i>
+                <h3>AI Facilitation</h3>
+                <p>Advanced NLP helps identify common ground and summarize discussions.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-halved feature-icon"></i>
+                <h3>Transparent Process</h3>
+                <p>Verifiable results and open methodology build public trust.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <h2>What We Can Help With</h2>
+        <div class="case-grid">
+            <div class="case-card">
+                <h3>Government</h3>
+                <ul>
+                    <li>Policy feedback collection</li>
+                    <li>Budget prioritization</li>
+                    <li>Regulatory impact analysis</li>
+                    <li>Public service improvement</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Local Community</h3>
+                <ul>
+                    <li>Urban planning decisions</li>
+                    <li>Community resource allocation</li>
+                    <li>Local ordinance development</li>
+                    <li>Neighborhood safety initiatives</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h3>Organizations</h3>
+                <ul>
+                    <li>Stakeholder engagement</li>
+                    <li>CSR program development</li>
+                    <li>Workforce policy shaping</li>
+                    <li>Industry standard collaboration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Developed by</h2>
+        <div class="team-logos">
+            <a href="https://digitaleconomy.stanford.edu/">
+                <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2021/10/S-DEL-condensed-2color.png" alt="Stanford Digital Economy Lab" class="team-logo" loading="lazy">
+            </a>
+            <a href="https://mitgovlab.org/">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvyUHlnrpVSegbkevXxmEEeYSnMlByPsZAg&s" alt="MIT Governance Lab" class="team-logo" loading="lazy">
+            </a>
+        </div>
+    </section>
+
+    <section class="demo" id="demo">
+        <h2>Experience the Future of Deliberation</h2>
+        <p>Explore our pilot project with the City of Boston on urban planning initiatives.</p>
+        <a href="https://deliberationbetajanuary.flutterflow.app" class="cta-button">Launch Demo</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 deliberation.io | Non-profit initiative for democratic engagement</p>
+        <div class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+        </div>
+    </footer>
+</body>
+</html> 
