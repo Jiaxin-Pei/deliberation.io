@@ -318,6 +318,42 @@
         .logo-link:hover {
             opacity: 0.8;
         }
+
+        .subscribe {
+            padding: 4rem 5%;
+            background: white;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .subscribe-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0,0,0,0.1);
+            border-radius: 5px;
+            background: rgba(0,0,0,0.03);
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        input::placeholder {
+            color: rgba(0,0,0,0.5);
+        }
+
+        #message {
+            margin-top: 1rem;
+            min-height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -327,6 +363,7 @@
             <a href="#features">Features</a>
             <a href="#team">Team</a>
             <a href="#demo">Demo</a>
+            <a href="#subscribe">Subscribe</a>
         </div>
     </nav>
 
@@ -413,6 +450,25 @@
         <a href="https://deliberationdigdig.flutterflow.app/" class="cta-button">Launch Demo</a>
     </section>
 
+    <section class="subscribe" id="subscribe">
+        <h2>Stay Informed for Newsletters and Product Updates</h2>
+        <div class="subscribe-container">
+            <form id="subscriptionForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name*" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email Address*" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="organization" name="organization" placeholder="Organization (Optional)">
+                </div>
+                <button type="submit" class="cta-button">Get Updates</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2024 deliberation.io | Non-profit initiative for democratic engagement</p>
         <!-- <div class="footer-links">
@@ -420,5 +476,43 @@
             <a href="terms.html">Terms of Service</a>
         </div> -->
     </footer>
+
+    <script>
+    document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            organization: document.getElementById('organization').value
+        };
+
+        const messageDiv = document.getElementById('message');
+        messageDiv.textContent = 'Submitting...';
+        messageDiv.style.color = 'white';
+
+        fetch('https://script.google.com/macros/s/AKfycbxDs1tZq5M8F99_mXms_DJDxaepwQyE4OldWQcPzF17Q6zXUFvWK-EKebKsLvMM2mvz/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(() => {
+            messageDiv.textContent = 'Thank you for subscribing!';
+            messageDiv.style.color = '#90EE90';
+            document.getElementById('subscriptionForm').reset();
+            setTimeout(() => {
+                messageDiv.textContent = '';
+            }, 5000);
+        })
+        .catch(error => {
+            messageDiv.textContent = 'Error submitting form. Please try again.';
+            messageDiv.style.color = '#ff6b6b';
+            console.error('Error:', error);
+        });
+    });
+    </script>
 </body>
 </html> 
