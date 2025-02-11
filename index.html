@@ -308,11 +308,21 @@
         .footer-links a:hover {
             color: white;
         }
+
+        .logo-link {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <h1><span>deliberation.io</span></h1>
+        <h1><a href="#" class="logo-link"><span>deliberation.io</span></a></h1>
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#team">Team</a>
@@ -399,7 +409,7 @@
 
     <section class="demo" id="demo">
         <h2>Experience the Future of Deliberation</h2>
-        <p>Explore an example of a deliberation on the issue of gun control.</p>
+        <p>Explore a deliberation example on the AI usage in political campaigns.</p>
         <a href="https://deliberationbetajanuary.flutterflow.app" class="cta-button">Launch Demo</a>
     </section>
 
