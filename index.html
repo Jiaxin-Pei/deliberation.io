@@ -284,8 +284,10 @@
                 right: 0;
                 background: white;
                 flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-radius: 0 0 12px 12px;
+                overflow: hidden;
             }
             
             .nav-links.active {
@@ -293,20 +295,21 @@
             }
             
             .nav-links a {
-                padding: 1rem;
-                border-bottom: 1px solid #eee;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--neutral);
+                transition: background 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: var(--light);
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
             }
             
             .mobile-menu-toggle {
                 display: block;
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                color: var(--primary);
-            }
-            
-            .nav-links a::after {
-                display: none;
             }
 
             .team-logo {
@@ -529,17 +532,18 @@
         }
 
         .mobile-menu-toggle {
-            display: none; /* Hidden by default */
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: opacity 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block; /* Only show on mobile */
-            }
-            
-            .nav-links {
-                display: none; /* Keep original mobile behavior */
-            }
+        .mobile-menu-toggle:hover {
+            opacity: 0.7;
         }
 
         .subscribe button.cta-button {
@@ -721,27 +725,30 @@
         });
     });
 
-    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-        document.querySelector('.nav-links').classList.toggle('active');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        document.addEventListener('click', function closeMenu(e) {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-toggle')) {
+                navLinks.classList.remove('active');
+                document.removeEventListener('click', closeMenu);
+            }
+        });
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            if (target) {
-                const headerHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = target.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Update URL hash
-                history.pushState(null, null, targetId);
-            }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    document.querySelector('.logo-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
     </script>
