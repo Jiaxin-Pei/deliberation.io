@@ -284,10 +284,8 @@
                 right: 0;
                 background: white;
                 flex-direction: column;
-                padding: 0;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                border-radius: 0 0 12px 12px;
-                overflow: hidden;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             }
             
             .nav-links.active {
@@ -295,21 +293,20 @@
             }
             
             .nav-links a {
-                padding: 1rem 2rem;
-                border-bottom: 1px solid var(--neutral);
-                transition: background 0.3s ease;
-            }
-
-            .nav-links a:hover {
-                background: var(--light);
-            }
-            
-            .nav-links a:last-child {
-                border-bottom: none;
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
             }
             
             .mobile-menu-toggle {
                 display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--primary);
+            }
+            
+            .nav-links a::after {
+                display: none;
             }
 
             .team-logo {
@@ -539,11 +536,60 @@
             color: var(--primary);
             cursor: pointer;
             padding: 0.5rem;
-            transition: opacity 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .mobile-menu-toggle:hover {
-            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 0;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                border-radius: 0 0 15px 15px;
+                overflow: hidden;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--neutral);
+                transition: background 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: var(--light);
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-menu-toggle i {
+                transition: transform 0.3s ease;
+            }
+
+            .mobile-menu-toggle.active i {
+                transform: rotate(180deg);
+            }
         }
 
         .subscribe button.cta-button {
@@ -725,22 +771,48 @@
         });
     });
 
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileMenuToggle.addEventListener('click', function() {
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+        const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');
-        document.addEventListener('click', function closeMenu(e) {
-            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-toggle')) {
-                navLinks.classList.remove('active');
-                document.removeEventListener('click', closeMenu);
-            }
+        this.classList.toggle('active');
+        
+        // Close menu when clicking outside
+        if (navLinks.classList.contains('active')) {
+            document.addEventListener('click', function closeMenu(e) {
+                if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-toggle')) {
+                    navLinks.classList.remove('active');
+                    document.querySelector('.mobile-menu-toggle').classList.remove('active');
+                    document.removeEventListener('click', closeMenu);
+                }
+            });
+        }
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.mobile-menu-toggle').classList.remove('active');
         });
     });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                const headerHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL hash
+                history.pushState(null, null, targetId);
+            }
         });
     });
 
