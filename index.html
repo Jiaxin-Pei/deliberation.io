@@ -329,15 +329,19 @@
         }
 
         .use-cases {
-            padding: 4rem 5%;
+            padding: 6rem 8%;
             background: var(--light);
+            border-radius: 30px;
+            margin: 3rem auto;
+            max-width: 1400px;
         }
 
         .case-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 2rem;
+            padding: 0 1rem;
         }
 
         .case-card {
@@ -384,8 +388,13 @@
         }
 
         @media (max-width: 768px) {
-            section {
+            .use-cases {
+                border-radius: 20px;
                 padding: 4rem 5%;
+            }
+            
+            .case-grid {
+                padding: 0;
             }
             
             .features-grid,
