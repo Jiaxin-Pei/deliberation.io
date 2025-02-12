@@ -234,7 +234,7 @@
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            transition: background 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
             margin-top: 1rem;
             position: relative;
             overflow: hidden;
@@ -243,10 +243,17 @@
             font-weight: 600;
             font-size: 1.1rem;
             letter-spacing: 0.3px;
+            cursor: pointer;
         }
 
         .cta-button:hover {
-            background: #1591a5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(23, 162, 184, 0.2);
         }
 
         .cta-button::after {
@@ -518,6 +525,8 @@
         #message {
             margin-top: 1rem;
             min-height: 20px;
+            transition: opacity 0.3s ease;
+            font-weight: 500;
         }
 
         @media (hover: hover) {
@@ -806,6 +815,14 @@
     document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.style.opacity = '0.7';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
@@ -813,9 +830,8 @@
         };
 
         const messageDiv = document.getElementById('message');
-        messageDiv.textContent = 'Submitting...';
-        messageDiv.style.color = 'white';
-
+        messageDiv.style.opacity = '0';
+        
         fetch('https://script.google.com/macros/s/AKfycbxDs1tZq5M8F99_mXms_DJDxaepwQyE4OldWQcPzF17Q6zXUFvWK-EKebKsLvMM2mvz/exec', {
             method: 'POST',
             mode: 'no-cors',
@@ -825,17 +841,30 @@
             body: JSON.stringify(formData)
         })
         .then(() => {
-            messageDiv.textContent = 'Thank you for subscribing!';
-            messageDiv.style.color = '#90EE90';
+            messageDiv.textContent = 'Thank you for subscribing! 🎉';
+            messageDiv.style.color = '#2ecc71';
+            messageDiv.style.opacity = '1';
             document.getElementById('subscriptionForm').reset();
+            
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.style.opacity = '1';
+            submitButton.textContent = originalText;
+            
             setTimeout(() => {
-                messageDiv.textContent = '';
+                messageDiv.style.opacity = '0';
             }, 5000);
         })
         .catch(error => {
             messageDiv.textContent = 'Error submitting form. Please try again.';
-            messageDiv.style.color = '#ff6b6b';
+            messageDiv.style.color = '#e74c3c';
+            messageDiv.style.opacity = '1';
             console.error('Error:', error);
+            
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.style.opacity = '1';
+            submitButton.textContent = originalText;
         });
     });
 
