@@ -37,6 +37,8 @@
 
         html {
             overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Height of navbar */
         }
 
         .navbar {
@@ -413,6 +415,20 @@
                 transform: translateY(-5px);
             }
         }
+
+        .mobile-menu-toggle {
+            display: none; /* Hidden by default */
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block; /* Only show on mobile */
+            }
+            
+            .nav-links {
+                display: none; /* Keep original mobile behavior */
+            }
+        }
     </style>
 </head>
 <body>
@@ -581,6 +597,26 @@
 
     document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
         document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                const headerHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL hash
+                history.pushState(null, null, targetId);
+            }
+        });
     });
     </script>
 </body>
