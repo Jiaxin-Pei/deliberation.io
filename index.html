@@ -16,10 +16,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <style>
         :root {
-            --primary: #1a2b49;
-            --secondary: #2c83d1;
-            --light: #f8f9fc;
-            --accent: #ff6b6b;
+            --primary: #1e3d59;      /* Deeper blue - trust, stability */
+            --secondary: #17a2b8;    /* Teal blue - modern, approachable */
+            --light: #f7f9fc;        /* Softer light background */
+            --accent: #ff6b6b;       /* Warm red - engagement, action */
+            --text: #2d4a6d;         /* Softer text color */
+            --neutral: #edf2f7;      /* Neutral background */
         }
 
         * {
@@ -43,7 +45,7 @@
 
         .navbar {
             padding: 1rem 5%;
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(0,0,0,0.05);
             position: fixed;
@@ -63,7 +65,10 @@
         }
 
         .navbar h1 span {
-            color: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -97,15 +102,49 @@
 
         .hero {
             padding: 10rem 5% 6rem;
-            background: linear-gradient(135deg, var(--secondary), #1a5f9a);
+            background: linear-gradient(rgba(30, 61, 89, 0.92), rgba(23, 162, 184, 0.88)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             text-align: center;
+            position: relative;
         }
 
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            line-height: 1.2;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978') center/1200px repeat;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative; 
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .features {
@@ -121,10 +160,10 @@
         }
 
         .feature-card {
-            background: white;
-            padding: 2.5rem;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 10px;
+            background: linear-gradient(to bottom, white, var(--light));
+            padding: 2.8rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--neutral);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -140,6 +179,17 @@
             margin-bottom: 1rem;
         }
 
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin: 1rem 0;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         .team {
             padding: 4rem 5%;
             background: white;
@@ -149,15 +199,16 @@
         .team-logos {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
+            gap: 4rem;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
 
         .team-logo {
-            height: 80px;
+            height: 70px;
             opacity: 0.8;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            filter: grayscale(0.2);
         }
 
         .team-logo:hover {
@@ -173,21 +224,24 @@
 
         .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             background: var(--secondary);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background 0.3s ease;
             margin-top: 1rem;
             position: relative;
             overflow: hidden;
-            border: 2px solid white;
+            border: none;
+            box-shadow: 0 2px 10px rgba(23, 162, 184, 0.2);
             font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
         }
 
         .cta-button:hover {
-            background: #2980b9;
+            background: #1591a5;
         }
 
         .cta-button::after {
@@ -283,8 +337,8 @@
 
         .case-card {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
+            padding: 2.5rem;
+            border-radius: 12px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -305,7 +359,8 @@
         }
 
         .case-card li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
+            color: var(--text);
             border-bottom: 1px solid #eee;
         }
 
@@ -320,11 +375,12 @@
         }
 
         h2 {
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
+            font-size: 2.4rem;
+            margin-bottom: 3.5rem;
             position: relative;
             display: block;
             text-align: center;
+            letter-spacing: -0.5px;
         }
 
         h2::after {
@@ -334,9 +390,10 @@
             left: 0;
             right: 0;
             margin: 0 auto;
-            width: 60px;
-            height: 3px;
+            width: 70px;
+            height: 4px;
             background: var(--accent);
+            border-radius: 2px;
         }
 
         h3 {
@@ -376,6 +433,15 @@
             opacity: 0.8;
         }
 
+        .logo-link span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover span {
+            transform: translateY(-2px);
+        }
+
         .subscribe {
             padding: 4rem 5%;
             background: white;
@@ -395,16 +461,23 @@
 
         input {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             border: 2px solid rgba(0,0,0,0.1);
-            border-radius: 5px;
+            border-radius: 8px;
             background: rgba(0,0,0,0.03);
             color: var(--primary);
             font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         input::placeholder {
             color: rgba(0,0,0,0.5);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
         }
 
         #message {
@@ -455,9 +528,11 @@
     </nav>
 
     <section class="hero">
-        <h2>Reimagining Democratic Engagement</h2>
-        <p>Facilitating large-scale, open dialogues between citizens to strengthen collective decision-making.</p>
-        <a href="#demo" class="cta-button">Check Demo</a>
+        <div class="hero-content">
+            <h2>Reimagining Democratic Engagement</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;">Facilitating large-scale, open dialogues between citizens to strengthen collective decision-making.</p>
+            <a href="#demo" class="cta-button">Check Demo</a>
+        </div>
     </section>
 
     <section class="features" id="features">
@@ -537,6 +612,7 @@
     <section class="demo" id="demo">
         <h2>Experience the Future of Deliberation</h2>
         <p>Participate in a deliberation on the use of AI in political campaigns.</p>
+        <br>
         <a href="https://deliberationdigdig.flutterflow.app/" class="cta-button">Launch Demo</a>
     </section>
 
@@ -553,7 +629,7 @@
                 <div class="form-group">
                     <input type="text" id="organization" name="organization" placeholder="Organization (Optional)">
                 </div>
-                <button type="submit" class="cta-button">Get Updates</button>
+                <button type="submit" class="cta-button" style="padding: 1rem 2rem;">Get Updates</button>
             </form>
             <div id="message"></div>
         </div>
