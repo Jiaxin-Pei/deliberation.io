@@ -263,6 +263,10 @@
             .cta-button {
                 width: 100%;
             }
+
+            .subscribe button.cta-button {
+                width: 100%; /* Full width on mobile */
+            }
         }
 
         .use-cases {
@@ -428,6 +432,11 @@
             .nav-links {
                 display: none; /* Keep original mobile behavior */
             }
+        }
+
+        .subscribe button.cta-button {
+            width: auto; /* Override mobile full-width */
+            margin-top: 0; /* Remove extra margin */
         }
     </style>
 </head>
