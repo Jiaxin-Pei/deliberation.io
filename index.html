@@ -16,12 +16,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <style>
         :root {
-            --primary: #1e3d59;      /* Deeper blue - trust, stability */
-            --secondary: #17a2b8;    /* Teal blue - modern, approachable */
-            --light: #f7f9fc;        /* Softer light background */
-            --accent: #ff6b6b;       /* Warm red - engagement, action */
-            --text: #2d4a6d;         /* Softer text color */
-            --neutral: #edf2f7;      /* Neutral background */
+            --primary: #1a1a1a;       /* Dark charcoal */
+            --secondary: #404040;     /* Medium gray */
+            --accent: #4CAF50;        /* Sophisticated green */
+            --background: #f5f5f5;    /* Light background */
+            --surface: #ffffff;       /* Card backgrounds */
+            --border: #e0e0e0;       /* Borders */
+            --text-primary: #212121; 
+            --text-secondary: #616161;
         }
 
         * {
@@ -33,7 +35,7 @@
 
         body {
             line-height: 1.7;
-            color: var(--primary);
+            color: var(--text-primary);
             position: relative;
         }
 
@@ -47,7 +49,7 @@
             padding: 1rem 5%;
             background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border);
             position: fixed;
             width: 100%;
             top: 0;
@@ -65,7 +67,7 @@
         }
 
         .navbar h1 span {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            background: linear-gradient(45deg, var(--primary), #424242);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -92,7 +94,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary);
+            background: var(--accent);
             transition: width 0.3s ease;
         }
 
@@ -105,7 +107,7 @@
             margin-bottom: -3rem; /* Overlap next section */
             border-radius: 0 0 30px 30px;
             max-width: none;  /* Hero should be full width */
-            background: linear-gradient(rgba(30, 61, 89, 0.92), rgba(23, 162, 184, 0.88)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+            background: linear-gradient(rgba(45, 45, 45, 0.95), rgba(60, 60, 60, 0.95)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -138,6 +140,7 @@
             margin-bottom: 1.5rem;
             font-weight: 800;
             letter-spacing: -1px;
+            color: var(--surface);
         }
 
         .hero-content p {
@@ -163,10 +166,10 @@
         }
 
         .feature-card {
-            background: linear-gradient(to bottom, white, var(--light));
+            background: var(--surface);
             padding: 2.8rem 2rem;
             border-radius: 12px;
-            border: 1px solid var(--neutral);
+            border: 1px solid var(--border);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -178,7 +181,7 @@
 
         .feature-icon {
             font-size: 2rem;
-            color: var(--secondary);
+            color: var(--primary);
             margin-bottom: 1rem;
         }
 
@@ -189,7 +192,7 @@
         }
 
         .feature-card p {
-            color: var(--text);
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
@@ -211,18 +214,18 @@
             height: 70px;
             opacity: 0.8;
             transition: transform 0.3s ease, opacity 0.3s ease;
-            filter: grayscale(0.2);
+            filter: grayscale(1);
         }
 
         .team-logo:hover {
             transform: scale(1.1);
-            opacity: 1;
+            filter: grayscale(0.5);
         }
 
         .demo {
             padding: 4rem 8%;
             text-align: center;
-            background: var(--light);
+            background: var(--background);
             border-radius: 30px;
             margin: 3rem auto;
         }
@@ -230,7 +233,7 @@
         .cta-button {
             display: inline-block;
             padding: 1.2rem 2.5rem;
-            background: var(--secondary);
+            background: var(--accent);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -239,7 +242,7 @@
             position: relative;
             overflow: hidden;
             border: none;
-            box-shadow: 0 2px 10px rgba(23, 162, 184, 0.2);
+            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
             font-weight: 600;
             font-size: 1.1rem;
             letter-spacing: 0.3px;
@@ -248,12 +251,12 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
 
         .cta-button:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(23, 162, 184, 0.2);
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
         }
 
         .cta-button::after {
@@ -337,7 +340,7 @@
 
         .use-cases {
             padding: 6rem 8%;
-            background: var(--light);
+            background: var(--background);
             border-radius: 30px;
             margin: 3rem auto;
             max-width: 1400px;
@@ -376,7 +379,7 @@
 
         .case-card li {
             padding: 0.8rem 0;
-            color: var(--text);
+            color: var(--text-secondary);
             border-bottom: 1px solid #eee;
         }
 
@@ -574,12 +577,12 @@
             
             .nav-links a {
                 padding: 1rem 2rem;
-                border-bottom: 1px solid var(--neutral);
+                border-bottom: 1px solid var(--border);
                 transition: background 0.3s ease;
             }
 
             .nav-links a:hover {
-                background: var(--light);
+                background: var(--background);
             }
             
             .nav-links a:last-child {
@@ -626,7 +629,7 @@
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             gap: 3rem;
-            background: linear-gradient(135deg, var(--light), white);
+            background: var(--surface);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -644,7 +647,7 @@
         .paper-badge {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: var(--secondary);
+            background: var(--accent);
             color: white;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -665,7 +668,7 @@
         }
 
         .paper-abstract {
-            color: var(--text);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.6;
         }
@@ -674,7 +677,7 @@
             display: flex;
             gap: 2rem;
             margin-bottom: 2rem;
-            color: var(--text);
+            color: var(--text-secondary);
         }
 
         .paper-meta span {
@@ -685,7 +688,7 @@
 
         .paper-visual {
             position: relative;
-            background: var(--light);
+            background: var(--background);
             overflow: hidden;
             min-height: 300px;
         }
