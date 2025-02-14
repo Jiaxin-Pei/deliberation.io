@@ -365,11 +365,16 @@
             }
             
             .cta-button {
-                width: 100%;
+                width: auto;         /* Override full width */
+                min-width: 200px;    /* Set minimum width */
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
             }
 
-            .subscribe button.cta-button {
-                width: 100%; /* Full width on mobile */
+            /* Keep other mobile buttons full width */
+            .subscribe button.cta-button,
+            .demo .cta-button {
+                width: 100%;
             }
 
             .hero-content h2 {
