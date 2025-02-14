@@ -299,19 +299,28 @@
         }
 
         @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+
             .hero-content h2 {
                 font-size: 2.5rem;
                 line-height: 1.3;
+                padding: 0 1rem;
             }
             
             .hero-content p {
                 font-size: 1.1rem;
                 margin-bottom: 2rem;
+                padding: 0 2rem;
+                max-width: 500px;
             }
             
             .hero-content .cta-button {
                 padding: 1rem 2rem;
                 font-size: 1.1rem;
+                min-width: auto;
+                width: auto;
             }
             
             h2 {
@@ -365,24 +374,27 @@
             }
             
             .cta-button {
-                width: auto;         /* Override full width */
-                min-width: 200px;    /* Set minimum width */
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
+                width: 100%;
             }
 
-            /* Keep other mobile buttons full width */
-            .subscribe button.cta-button,
-            .demo .cta-button {
-                width: 100%;
+            .subscribe button.cta-button {
+                width: 100%; /* Full width on mobile */
             }
 
             .hero-content h2 {
                 font-size: 2rem;
+                padding: 0;
             }
             
             .hero-content p {
                 font-size: 1rem;
+                padding: 0 1rem;
+                max-width: 300px;
+            }
+
+            .hero-content .cta-button {
+                padding: 0.9rem 1.8rem;
+                width: auto;
             }
         }
 
