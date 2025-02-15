@@ -323,13 +323,17 @@
 
         @media (max-width: 768px) {
             .hero {
-                height: 85vh;
+                height: 100vh; /* Full viewport height */
                 width: 100%;
-                border-radius: 0 0 25px 25px;
+                border-radius: 0; /* Remove border radius on mobile */
+                margin: 0;
+                padding: 0;
             }
 
             .hero-content {
                 padding: 0 1.5rem;
+                justify-content: center; /* Center content vertically */
+                padding-top: 80px; /* Account for navbar height */
             }
 
             .hero-content h2 {
@@ -348,6 +352,7 @@
             .hero-content .cta-button {
                 padding: 1.2rem 2.8rem;
                 font-size: 1.1rem;
+                margin-top: 1rem;
             }
             
             h2 {
@@ -409,7 +414,8 @@
             }
 
             .hero {
-                height: 80vh;
+                height: 100vh;
+                min-height: auto; /* Remove min-height constraint */
             }
 
             .hero-content h2 {
