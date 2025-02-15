@@ -820,6 +820,10 @@
             .paper-content {
                 padding: 2rem;
                 min-height: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center content horizontally */
+                text-align: center;  /* Center text */
             }
             
             .paper-content h3 {
@@ -841,7 +845,6 @@
             .paper-button {
                 width: 100%;
                 justify-content: center;
-                display: flex; /* Ensure flex display for centering */
             }
         }
 
@@ -849,6 +852,8 @@
             .paper-content {
                 padding: 1.5rem;
                 min-height: 350px;
+                align-items: center; /* Center content horizontally */
+                text-align: center;  /* Center text */
             }
 
             .paper-content h3 {
@@ -862,12 +867,6 @@
             .paper-meta {
                 padding-top: 1.2rem;
                 margin-bottom: 1.2rem;
-            }
-
-            .paper-button {
-                width: 100%;
-                justify-content: center;
-                display: flex; /* Ensure flex display for centering */
             }
         }
 
