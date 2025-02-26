@@ -268,14 +268,13 @@
 
         .team-logo {
             height: 70px;
-            opacity: 0.8;
+            opacity: 0.9;
             transition: transform 0.3s ease, opacity 0.3s ease;
-            filter: grayscale(1);
         }
 
         .team-logo:hover {
             transform: scale(1.1);
-            filter: grayscale(0.5);
+            opacity: 1;
         }
 
         .demo {
@@ -889,6 +888,135 @@
                 opacity: 1;
             }
         }
+
+        .funding-support {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .funding-support h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .supporter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .supporter-logo {
+            max-width: 300px;
+            height: auto;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .supporter-logo:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .funding-support {
+                margin-top: 3rem;
+            }
+
+            .funding-support h3 {
+                font-size: 1.8rem;
+            }
+
+            .supporter-logo {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .funding-support h3 {
+                font-size: 1.6rem;
+            }
+
+            .supporter-logo {
+                max-width: 200px;
+            }
+        }
+
+        .team h3 {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-photo {
+            transform: translateY(-5px);
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .member-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .contact-email {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .contact-email a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -899,7 +1027,7 @@
             <a href="#team">Team</a>
             <a href="#demo">Demo</a>
             <a href="#research">White Paper</a>
-            <a href="#subscribe">Subscribe</a>
+            <a href="#subscribe">Stay in Touch</a>
         </div>
         <button class="mobile-menu-toggle">
             <i class="fas fa-bars"></i>
@@ -989,17 +1117,94 @@
     </section>
 
     <section class="team" id="team">
-        <h2>Developed by</h2>
-        <div class="team-logos">
-            <a href="https://digitaleconomy.stanford.edu/">
-                <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2021/10/S-DEL-condensed-2color.png" alt="Stanford Digital Economy Lab" class="team-logo" loading="lazy">
-            </a>
-            <a href="https://hai.stanford.edu/">
-                <img src="https://hai.stanford.edu/sites/default/files/inline-images/horizontal_dark.png" alt="Stanford HAI" class="team-logo" loading="lazy">
-            </a>
-            <a href="https://mitgovlab.org/">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvyUHlnrpVSegbkevXxmEEeYSnMlByPsZAg&s" alt="MIT Governance Lab" class="team-logo" loading="lazy">
-            </a>
+        <h2>Team</h2>
+        
+        <!-- Leaders Section -->
+        <div class="team-leaders">
+            <h3>Leaders</h3>
+            <div class="members-grid">
+                <div class="team-member">
+                    <img src="https://hai.stanford.edu/sites/default/files/styles/person_big/public/person/bio-images/Sandy_Pentland.png?itok=7fuBAUN7" 
+                         alt="Alex 'Sandy' Pentland" 
+                         class="member-photo">
+                    <h4>Alex 'Sandy' Pentland</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://polisci.mit.edu/files/ps/styles/personimage/public/imce/faculty/Lily_TsaiII_500x500.jpg?itok=Uo76cKNa" 
+                         alt="Lily Tsai" 
+                         class="member-photo">
+                    <h4>Lily Tsai</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Members Section -->
+        <div class="team-members">
+            <h3>Members</h3>
+            <div class="members-grid">
+                <div class="team-member">
+                    <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2023/07/Alia-Braley-100.jpg" 
+                         alt="Alia Braley" 
+                         class="member-photo">
+                    <h4>Alia Braley</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://lulachen.github.io/images/Chen_profile.png" 
+                         alt="Lula Chen" 
+                         class="member-photo">
+                    <h4>Lula Chen</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2023/07/jose-ramon-100.jpg" 
+                         alt="José Ramón Enríquez" 
+                         class="member-photo">
+                    <h4>José Ramón Enríquez</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://cesta.stanford.edu/sites/cesta/files/styles/hs_medium_square_360x360/public/media/image/umar_patel_headshot_0.jpg?h=993e21fc&itok=vnw_67ej" 
+                         alt="Umar Patel" 
+                         class="member-photo">
+                    <h4>Umar Patel</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2024/10/pei-100.jpg" 
+                         alt="Jiaxin Pei" 
+                         class="member-photo">
+                    <h4>Jiaxin Pei</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://democracy.dsi.uzh.ch/app/uploads/2022/12/democrcy-elisabeth-stockinger-20221223.jpeg" 
+                         alt="Elisabeth Stockinger" 
+                         class="member-photo">
+                    <h4>Elisabeth Stockinger</h4>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Partner Institutions -->
+        <div class="team-container">
+            <h3>Partner Institutions</h3>
+            <div class="team-logos">
+                <a href="https://digitaleconomy.stanford.edu/">
+                    <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2021/10/S-DEL-condensed-2color.png" alt="Stanford Digital Economy Lab" class="team-logo" loading="lazy">
+                </a>
+                <a href="https://hai.stanford.edu/">
+                    <img src="https://hai.stanford.edu/sites/default/files/inline-images/horizontal_dark.png" alt="Stanford HAI" class="team-logo" loading="lazy">
+                </a>
+                <a href="https://mitgovlab.org/">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvyUHlnrpVSegbkevXxmEEeYSnMlByPsZAg&s" alt="MIT Governance Lab" class="team-logo" loading="lazy">
+                </a>
+            </div>
+        </div>
+
+        <div class="funding-support">
+            <h3>Funding Support</h3>
+            <div class="supporter">
+                <img src="https://www.projectliberty.io/wp-content/uploads/2025/01/Project-Liberty-Logo-Website.png" 
+                     alt="Project Liberty Logo" 
+                     class="supporter-logo">
+            </div>
         </div>
     </section>
 
@@ -1049,6 +1254,9 @@
                 <button type="submit" class="cta-button" style="padding: 1rem 2rem;">Get Updates</button>
             </form>
             <div id="message"></div>
+            <p class="contact-email">
+                Contact us for collaborations and suggestions: <a href="mailto:info.deliberation.io@gmail.com">info.deliberation.io@gmail.com</a>
+            </p>
         </div>
     </section>
 
