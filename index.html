@@ -1049,6 +1049,94 @@
         .contact-email a:hover {
             opacity: 0.8;
         }
+
+        .composite-logo-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .composite-logo {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            background-color: transparent;
+            padding: 0 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .composite-logo:hover {
+            background-color: rgba(240, 240, 240, 0.7);
+        }
+
+        .bu-logo-container {
+            flex-shrink: 0;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bu-logo {
+            height: 55px; /* Increased size for better visibility */
+            width: auto;
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .lab-name {
+            font-family: 'Arial', sans-serif;
+            color: #CC0000; /* BU red color */
+            font-weight: 700;
+            font-size: 16.5px;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-top: 0;
+            padding-left: 0;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lab-name .platform {
+            display: block;
+            color: #333333;
+            font-weight: 600;
+            font-size: 19px; /* Larger font size for Platform */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .composite-logo {
+                height: 65px;
+                padding: 0 8px;
+            }
+            
+            .bu-logo {
+                height: 34px; /* Increased for better visibility on mobile */
+            }
+            
+            .lab-name {
+                font-size: 14.5px;
+                letter-spacing: 0.3px;
+                margin-top: 0;
+                line-height: 1.1;
+            }
+            
+            .lab-name .platform {
+                font-size: 17px; /* Increased for better proportions */
+                letter-spacing: 0.3px;
+                margin-bottom: 2px;
+                line-height: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1228,8 +1316,16 @@
                 <a href="https://mitgovlab.org/" target="_blank">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvyUHlnrpVSegbkevXxmEEeYSnMlByPsZAg&s" alt="MIT Governance Lab" class="team-logo" loading="lazy">
                 </a>
-                <a href="http://truthmarkets.com/" target="_blank">
-                    <img src="https://logos-world.net/wp-content/uploads/2022/01/Boston-University-Emblem.png" alt="Boston University" class="team-logo" loading="lazy">
+                <a href="http://truthmarkets.com/" target="_blank" class="composite-logo-container">
+                    <div class="composite-logo">
+                        <div class="bu-logo-container">
+                            <img src="https://seeklogo.com/images/B/boston-university-logo-9C93B75A4A-seeklogo.com.png" alt="Boston University" class="bu-logo">
+                        </div>
+                        <div class="lab-name">
+                            <span>Platform</span>
+                            Governance Lab
+                        </div>
+                    </div>
                 </a>
             </div>
         </div>
