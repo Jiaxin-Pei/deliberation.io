@@ -261,13 +261,16 @@
         .team-logos {
             display: flex;
             justify-content: center;
-            gap: 4rem;
+            align-items: center;
+            gap: 3.5rem;
             margin-top: 3rem;
             flex-wrap: wrap;
         }
 
         .team-logo {
             height: 70px;
+            max-width: 200px;
+            object-fit: contain;
             opacity: 0.9;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -1212,14 +1215,17 @@
         <div class="team-container" id="partners">
             <h3>Partner Institutions</h3>
             <div class="team-logos">
-                <a href="https://digitaleconomy.stanford.edu/">
+                <a href="https://digitaleconomy.stanford.edu/" target="_blank">
                     <img src="https://digitaleconomy.stanford.edu/wp-content/uploads/2021/10/S-DEL-condensed-2color.png" alt="Stanford Digital Economy Lab" class="team-logo" loading="lazy">
                 </a>
-                <a href="https://hai.stanford.edu/">
+                <a href="https://hai.stanford.edu/" target="_blank">
                     <img src="https://s3.amazonaws.com/media.slideroom.com/organization/11261/40a271df-cf92-4496-910b-01c2262c1f2a.png" alt="Stanford HAI" class="team-logo" loading="lazy">
                 </a>
-                <a href="https://mitgovlab.org/">
+                <a href="https://mitgovlab.org/" target="_blank">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvyUHlnrpVSegbkevXxmEEeYSnMlByPsZAg&s" alt="MIT Governance Lab" class="team-logo" loading="lazy">
+                </a>
+                <a href="http://truthmarkets.com/" target="_blank">
+                    <img src="https://logos-world.net/wp-content/uploads/2022/01/Boston-University-Emblem.png" alt="Boston University" class="team-logo" loading="lazy">
                 </a>
             </div>
         </div>
