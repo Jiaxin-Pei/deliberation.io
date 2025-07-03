@@ -254,7 +254,7 @@
 
         .team {
             padding: 4rem 5%;
-            background: white;
+            background: #f8f9fa;
             text-align: center;
         }
 
@@ -283,7 +283,7 @@
         .demo {
             padding: 4rem 8%;
             text-align: center;
-            background: var(--background);
+            background: white;
             border-radius: 30px;
             margin: 3rem auto;
         }
@@ -450,7 +450,7 @@
 
         .use-cases {
             padding: 6rem 8%;
-            background: var(--background);
+            background: #f8f9fa;
             border-radius: 30px;
             margin: 3rem auto;
             max-width: 1400px;
@@ -737,7 +737,7 @@
 
         .research-papers {
             padding: 6rem 8%;
-            background: white;
+            background: #f8f9fa;
         }
 
         .papers-grid {
@@ -1196,6 +1196,152 @@
                 line-height: 1;
             }
         }
+
+        .use-case-highlight {
+            padding: 6rem 8%;
+            background: white;
+            border-radius: 30px;
+            margin: 3rem auto;
+            max-width: 1400px;
+        }
+
+        .case-highlight-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .case-highlight-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .case-highlight-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1.5rem;
+        }
+
+        .case-logo {
+            height: 60px;
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .case-title h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0 0 0.5rem 0;
+            line-height: 1.3;
+        }
+
+        .case-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .case-description p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .case-description blockquote {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .case-description blockquote p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .case-description cite {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .simple-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .simple-link:hover {
+            opacity: 0.8;
+        }
+
+        .simple-link i {
+            margin-left: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .use-case-highlight {
+                border-radius: 20px;
+                padding: 4rem 5%;
+            }
+
+            .case-highlight-content {
+                padding: 2rem;
+            }
+
+            .case-highlight-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .case-logo {
+                height: 50px;
+            }
+
+            .case-title h3 {
+                font-size: 1.5rem;
+            }
+
+            .case-description blockquote {
+                padding: 1rem 1.5rem;
+                margin: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-highlight-content {
+                padding: 1.5rem;
+            }
+
+            .case-logo {
+                height: 45px;
+            }
+
+            .case-title h3 {
+                font-size: 1.3rem;
+            }
+
+            .case-description p {
+                font-size: 1rem;
+            }
+
+            .case-description blockquote p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1203,6 +1349,7 @@
         <h1><a href="#" class="logo-link"><span>deliberation.io</span></a></h1>
         <div class="nav-links">
             <a href="#features">Features</a>
+            <a href="#use-cases">Use Cases</a>
             <a href="#team">Team</a>
             <a href="#partners">Partners</a>
             <a href="#demo">Demo</a>
@@ -1292,6 +1439,29 @@
                     <li>Workforce policy shaping</li>
                     <li>Industry standard collaboration</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-case-highlight" id="use-cases">
+        <h2>Use Cases</h2>
+        <div class="case-highlight-container">
+            <div class="case-highlight-content">
+                <div class="case-highlight-header">
+                    <img src="https://octo.dc.gov/sites/default/files/dc/dcgov_logo.jpg" alt="DC.gov Logo" class="case-logo">
+                    <div class="case-title">
+                        <h3>Washington, DC - AI Public Listening Session</h3>
+                        <p class="case-subtitle"></p>
+                    </div>
+                </div>
+                <div class="case-description">
+                    <p>Washington, DC is the first city in the country to utilize deliberation.io in collaboration with MIT Governance Lab and Stanford Digital Economy Lab. The District is using the platform to gather feedback for their AI Public Listening Session, enabling broader public input and ensuring diverse perspectives are heard in AI policy development.</p>
+                    <blockquote>
+                        <p>"AI presents a powerful opportunity to modernize how we deliver services and solve problems across our government. We're harnessing our DC AI values and our commitment to progress by using this technology responsibly to build a government that is more efficient, effective, and responsive to the needs of all residents."</p>
+                        <cite>— Stephen N. Miller, Chief Technology Officer, Washington, DC</cite>
+                    </blockquote>
+                    <p><a href="https://octo.dc.gov/release/bowser-administration-announces-first-its-kind-ai-pilot-program-new-platform-mit-governance" target="_blank" class="simple-link">Read Full Press Release <i class="fas fa-external-link-alt"></i></a></p>
+                </div>
             </div>
         </div>
     </section>
@@ -1408,21 +1578,21 @@
                     <h3>Generative AI for Pro-Democracy Platforms</h3>
                     <p class="paper-authors">Lily L. Tsai, Alex Pentland, Alia Braley, Nuole Chen, José Ramón Enríquez, and Anka Reuel</p>
                     <p class="paper-details"><em>White Paper</em>, 2024</p>
-                    <p class="paper-link"><a href="https://mit-genai.pubpub.org/pub/mn45hexw/release/1" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
+                    <p class="paper-link"><a href="https://mit-genai.pubpub.org/pub/mn45hexw/release/1" target="_blank" class="simple-link">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
 
                 <div class="paper-item">
                     <h3>Toward Building Deliberative Digital Media: From Subversion to Consensus</h3>
                     <p class="paper-authors">Alex Pentland and Lily Tsai</p>
                     <p class="paper-details"><em>PNAS Nexus,</em>2024</p>
-                    <p class="paper-link"><a href="https://doi.org/10.1093/pnasnexus/pgae407" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
+                    <p class="paper-link"><a href="https://doi.org/10.1093/pnasnexus/pgae407" target="_blank" class="simple-link">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
 
                 <div class="paper-item">
                     <h3>Deliberation.io: Facilitating Democratic and Civil Engagement at Scale with Open-Source and Open-Science</h3>
                     <p class="paper-authors">Jiaxin Pei, José Ramón Enríquez, Umar Patel, Alia Braley, Nuole Chen, Lily Tsai, and Alex Pentland</p>
                     <p class="paper-details"><em>Working Paper</em>, 2025</p>
-                    <p class="paper-link"><a href="https://drive.google.com/file/d/1dWYJnVWnzSC14MmebKkVI8ZYYEodkVZl/view" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
+                    <p class="paper-link"><a href="https://drive.google.com/file/d/1dWYJnVWnzSC14MmebKkVI8ZYYEodkVZl/view" target="_blank" class="simple-link">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
                 
                 <div class="paper-item">
@@ -1435,21 +1605,21 @@
                     <h3>The Face of the Crowd: Generating Consensus and Collective Action on Deliberative Democracy Platforms</h3>
                     <p class="paper-authors">Alia Braley, Lily Tsai, Nuole Chen, José Ramón Enríquez, Umar Patel, Jiaxin Pei, and Alex Pentland</p>
                     <p class="paper-details"><em>Working Paper</em>, 2025</p>
-                    <p class="paper-link"><a href="https://drive.google.com/file/d/1lJ118RhcEnjAOSFxNjFApl504xF07C7a/view" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
+                    <p class="paper-link"><a href="https://drive.google.com/file/d/1lJ118RhcEnjAOSFxNjFApl504xF07C7a/view" target="_blank" class="simple-link">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
                 
                 <div class="paper-item">
                     <h3>Socratic Dialogue: Leveraging AI-powered Reason-giving in Public Deliberation</h3>
                     <p class="paper-authors">José Ramón Enríquez, Umar Patel, Alia Braley, Nuole Chen, Jiaxin Pei, Lily Tsai, and Alex Pentland</p>
                     <p class="paper-details"><em>Working Paper</em>, 2025</p>
-                    <p class="paper-link"><a href="https://www.dropbox.com/scl/fi/ksyxchmbtmxs4kgtwryq1/SocraticDialogue_Enr-quez_etal_2025.pdf?rlkey=3u9z3hfn84ckv6d0jsqrwz9zm&e=1&dl=0" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
+                    <p class="paper-link"><a href="https://www.dropbox.com/scl/fi/ksyxchmbtmxs4kgtwryq1/SocraticDialogue_Enr-quez_etal_2025.pdf?rlkey=3u9z3hfn84ckv6d0jsqrwz9zm&e=1&dl=0" target="_blank" class="simple-link">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
                 
                 <div class="paper-item">
                     <h3>Beyond Moderation: How AI Facilitation Can Enrich Online Political Dialogue</h3>
                     <p class="paper-authors">Alia Braley, Jiaxin Pei, Nuole Chen, José Ramón Enríquez, Umar Patel, Lily Tsai, and Alex Pentland</p>
                     <p class="paper-details"><em>Working Paper</em>, 2025</p>
-                    <p class="paper-link"><a href="https://drive.google.com/file/d/1DyNIfJtU6enC8VlEQS1sTY7-_F85mEmG/view" target="_blank">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
+                    <p class="paper-link"><a href="https://drive.google.com/file/d/1DyNIfJtU6enC8VlEQS1sTY7-_F85mEmG/view" target="_blank" class="simple-link">Read Paper <i class="fas fa-external-link-alt"></i></a></p>
                 </div>
                 
             </div>
@@ -1473,7 +1643,7 @@
             </form>
             <div id="message"></div>
             <p class="contact-email">
-                Contact us for collaborations and suggestions: <a href="mailto:info.deliberation.io@gmail.com">info.deliberation.io@gmail.com</a>
+                Contact us for collaborations and suggestions: <a href="mailto:info.deliberation.io@gmail.com" class="simple-link">info.deliberation.io@gmail.com</a>
             </p>
         </div>
     </section>
